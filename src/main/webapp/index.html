@@ -2,12 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>新冠病毒疫情检测系统</title>
 
     <script src="js/jquery-2.1.0.js"></script>
     <script src="js/bootstrap.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css"/>
+    <script src="js/echarts.min.js"></script>
 </head>
-前端整合成功
+<div class="page-header">
+    <h1>新冠病毒疫情监测系统 <small>COVID19_DataV</small></h1>
+</div>
+
+<div id="mainView"></div>
+<script>
+    $("#mainView").load("views/mainView");
+</script>
+
 </body>
 </html>
