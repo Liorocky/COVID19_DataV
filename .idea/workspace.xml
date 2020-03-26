@@ -6,15 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fb20adf-2a29-41d0-ad0a-2012358be5d3" name="Default Changelist" comment="修改indexTitle">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/COVID19_DataV.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/42a377bf-f4fb-49b6-9365-2480c2b80ce1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/42a377bf-f4fb-49b6-9365-2480c2b80ce1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="8fb20adf-2a29-41d0-ad0a-2012358be5d3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,8 +233,16 @@
       <updated>1585010450495</updated>
       <workItem from="1585010452044" duration="995000" />
       <workItem from="1585011696353" duration="2935000" />
-      <workItem from="1585228595617" duration="3936000" />
+      <workItem from="1585228595617" duration="4456000" />
     </task>
+    <task id="LOCAL-00001" summary="修改indexTitle">
+      <created>1585237369114</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1585237369114</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -281,10 +282,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="641" y="146" key="#covid19/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1585230252030" />
-    <state x="560" y="106" key="CommitChangelistDialog2" timestamp="1585236993444">
+    <state x="560" y="106" key="CommitChangelistDialog2" timestamp="1585237366066">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="560" y="106" key="CommitChangelistDialog2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1585236993444" />
+    <state x="560" y="106" key="CommitChangelistDialog2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1585237366066" />
     <state x="184" y="92" key="DiffContextDialog" timestamp="1585230878206">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
