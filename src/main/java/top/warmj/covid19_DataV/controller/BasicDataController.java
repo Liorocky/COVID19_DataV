@@ -1,5 +1,6 @@
 package top.warmj.covid19_DataV.controller;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,5 +21,10 @@ public class BasicDataController {
     public BasicData getBasicData() {
         BasicData basicData = basicDataService.getBasicData();
         return basicData;
+    }
+
+    @RequestMapping("updateBasicData")
+    public void updateBasicData(@Param("startdate") String startdate, @Param("enddate") String enddate) {
+        basicDataService.updateBasicData(startdate, enddate);
     }
 }

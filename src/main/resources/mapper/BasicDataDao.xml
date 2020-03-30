@@ -5,4 +5,10 @@
     <select id="getBasicData" resultType="top.warmj.covid19_DataV.domain.BasicData">
         SELECT * FROM basicdata;
     </select>
+
+    <insert id="updateBasicData" parameterType="java.util.Map">
+        INSERT INTO
+        `basicdata`(`chinaConfirmedCount`, `chinaCurrentConfirmedCount`, `chinaSuspectedCount`, `chinaGraveCount`, `chinaDeadCount`, `chinaCuredCount`, `time`)
+        VALUES (#{chinaConfirmedCount}, #{chinaCurrentConfirmedCount}, #{chinaSuspectedCount}, #{chinaGraveCount}, #{chinaDeadCount}, #{chinaCuredCount}, FROM_UNIXTIME(#{time}));
+    </insert>
 </mapper>
