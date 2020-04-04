@@ -23,8 +23,4 @@ public class BasicDataController {
         return basicData;
     }
 
-    @RequestMapping("updateBasicData")
-    public void updateBasicData(@Param("startdate") String startdate, @Param("enddate") String enddate) {
-        basicDataService.updateBasicData(startdate, enddate);
-    }
 }

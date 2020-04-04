@@ -1,15 +1,15 @@
 package top.warmj.covid19_DataV.domain;
 
 
+import java.sql.Timestamp;
+
 public class BasicData {
 
   private String chinaConfirmedCount;
-  private String chinaCurrentConfirmedCount;
-  private String chinaSuspectedCount;
-  private String chinaGraveCount;
-  private String chinaDeadCount;
   private String chinaCuredCount;
-  private java.sql.Timestamp time;
+  private String chinaDeadCount;
+  private String overseas;
+  private java.sql.Timestamp updateTime;
 
   public String getChinaConfirmedCount() {
     return chinaConfirmedCount;
@@ -19,33 +19,13 @@ public class BasicData {
     this.chinaConfirmedCount = chinaConfirmedCount;
   }
 
-
-  public String getChinaCurrentConfirmedCount() {
-    return chinaCurrentConfirmedCount;
+  public String getChinaCuredCount() {
+    return chinaCuredCount;
   }
 
-  public void setChinaCurrentConfirmedCount(String chinaCurrentConfirmedCount) {
-    this.chinaCurrentConfirmedCount = chinaCurrentConfirmedCount;
+  public void setChinaCuredCount(String chinaCuredCount) {
+    this.chinaCuredCount = chinaCuredCount;
   }
-
-
-  public String getChinaSuspectedCount() {
-    return chinaSuspectedCount;
-  }
-
-  public void setChinaSuspectedCount(String chinaSuspectedCount) {
-    this.chinaSuspectedCount = chinaSuspectedCount;
-  }
-
-
-  public String getChinaGraveCount() {
-    return chinaGraveCount;
-  }
-
-  public void setChinaGraveCount(String chinaGraveCount) {
-    this.chinaGraveCount = chinaGraveCount;
-  }
-
 
   public String getChinaDeadCount() {
     return chinaDeadCount;
@@ -55,22 +35,19 @@ public class BasicData {
     this.chinaDeadCount = chinaDeadCount;
   }
 
-
-  public String getChinaCuredCount() {
-    return chinaCuredCount;
+  public String getOverseas() {
+    return overseas;
   }
 
-  public void setChinaCuredCount(String chinaCuredCount) {
-    this.chinaCuredCount = chinaCuredCount;
+  public void setOverseas(String overseas) {
+    this.overseas = overseas;
   }
 
-
-  public java.sql.Timestamp getTime() {
-    return time;
+  public Timestamp getUpdateTime() {
+    return updateTime;
   }
 
-  public void setTime(java.sql.Timestamp time) {
-    this.time = time;
+  public void setUpdateTime(Timestamp updateTime) {
+    this.updateTime = updateTime;
   }
-
 }

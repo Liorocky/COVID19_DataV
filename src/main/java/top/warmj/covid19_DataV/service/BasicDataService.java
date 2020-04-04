@@ -4,15 +4,8 @@ import top.warmj.covid19_DataV.domain.BasicData;
 
 public interface BasicDataService {
     /**
-     * 获取国内基础数据
+     * 获取国内基础数据 累计确诊 累计治愈 累计死亡 境外输入
      * @return
      */
     BasicData getBasicData();
-
-    /**
-     * 更新数据库基础数据
-     * @param startdate 开始日期
-     * @param enddate 结束日期
-     */
-    void updateBasicData(String startdate, String enddate);
 }

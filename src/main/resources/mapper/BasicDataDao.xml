@@ -3,12 +3,20 @@
 
 <mapper namespace="top.warmj.covid19_DataV.dao.BasicDataDao">
     <select id="getBasicData" resultType="top.warmj.covid19_DataV.domain.BasicData">
-        SELECT * FROM basicdata;
+        SELECT province_confirmedCount AS chinaConfirmedCount, province_curedCount AS chinaCuredCount, province_deadCount AS chinaDeadCount
+            , (
+                SELECT SUM(city_confirmedCount)
+                FROM (
+                    SELECT city_confirmedCount
+                    FROM dxyarea
+                    WHERE cityName = '境外输入'
+                    GROUP BY provinceName
+                ) city_confirmedCount
+            ) AS overseas, updateTime
+        FROM `dxyarea`
+        WHERE countryName = '中国'
+            AND provinceName = '中国'
+        GROUP BY provinceName
     </select>
 
-    <insert id="updateBasicData" parameterType="java.util.Map">
-        INSERT INTO
-        `basicdata`(`chinaConfirmedCount`, `chinaCurrentConfirmedCount`, `chinaSuspectedCount`, `chinaGraveCount`, `chinaDeadCount`, `chinaCuredCount`, `time`)
-        VALUES (#{chinaConfirmedCount}, #{chinaCurrentConfirmedCount}, #{chinaSuspectedCount}, #{chinaGraveCount}, #{chinaDeadCount}, #{chinaCuredCount}, FROM_UNIXTIME(#{time}));
-    </insert>
 </mapper>
