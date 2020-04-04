@@ -75,26 +75,26 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">国内疫情趋势图</h3>
                     </div>
-                    <div class="panel-body">
-                        疫情趋势图
+                    <div class="panel-body" id="trendCharts" style="width: 900px;height:400px; left: 12%; position: relative">
+
                     </div>
                     <ul class="container row nav nav-pills" role="tablist">
                         <li role="presentation" class="active col-lg-offset-2 col-md-offset-2 col-sm-offset-2
-                        col-lg-2 col-md-2 " style="text-align: center;">
-                            <a href="#NationTrend" aria-controls="China" role="tab" data-toggle="tab">
-                                全国疫情新增趋势</a>
+                        col-lg-2 col-md-2 " style="text-align: center;" onclick="switchChart('confirmedCount')">
+                            <a aria-controls="China" role="tab" data-toggle="tab">
+                                累计确诊</a>
                         </li>
-                        <li role="presentation" class="col-lg-2 col-md-2 " style="text-align: center;">
-                            <a href="#NationDefiniteTrend" aria-controls="foreign" role="tab" data-toggle="tab">
-                                全国确诊疑似趋势</a>
+                        <li role="presentation" class="col-lg-2 col-md-2 " style="text-align: center;" onclick="switchChart('currentConfirmedCount')">
+                            <a aria-controls="foreign" role="tab" data-toggle="tab">
+                                现存确诊</a>
                         </li>
-                        <li role="presentation" class="col-lg-2 col-md-2 " style="text-align: center;">
-                            <a href="#NationDefiniteTrend" aria-controls="foreign" role="tab" data-toggle="tab">
-                                全国累计治愈死亡</a>
+                        <li role="presentation" class="col-lg-2 col-md-2 " style="text-align: center;" onclick="switchChart('deadCount')">
+                            <a aria-controls="foreign" role="tab" data-toggle="tab">
+                                累计死亡</a>
                         </li>
-                        <li role="presentation" class="col-lg-2 col-md-2 " style="text-align: center;">
-                            <a href="#NationDefiniteTrend" aria-controls="foreign" role="tab" data-toggle="tab">
-                                治愈率/死亡率</a>
+                        <li role="presentation" class="col-lg-2 col-md-2 " style="text-align: center;" onclick="switchChart('curedCount')">
+                            <a aria-controls="foreign" role="tab" data-toggle="tab">
+                                累计治愈</a>
                         </li>
 
                     </ul>
