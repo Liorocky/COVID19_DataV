@@ -22,7 +22,19 @@ public class AllDataController {
     @RequestMapping("getBasicData")
     @ResponseBody
     public BasicData getBasicData() {
-        return allDataService.getBasicData();
+        BasicData basicData = allDataService.getBasicData();
+
+        //取整
+        basicData.setCurrentConfirmedCount(basicData.getCurrentConfirmedCount().replaceAll("\\.0", ""));
+        basicData.setSeriousCount(basicData.getSeriousCount().replaceAll("\\.0", ""));
+        basicData.setSuspectedIncr(basicData.getSuspectedIncr().replaceAll("\\.0", ""));
+        basicData.setCurrentConfirmedIncr(basicData.getCurrentConfirmedIncr().replaceAll("\\.0", ""));
+        basicData.setConfirmedIncr(basicData.getConfirmedIncr().replaceAll("\\.0", ""));
+        basicData.setCuredIncr(basicData.getCuredIncr().replaceAll("\\.0", ""));
+        basicData.setDeadIncr(basicData.getDeadIncr().replaceAll("\\.0", ""));
+        basicData.setSeriousIncr(basicData.getSeriousIncr().replaceAll("\\.0", ""));
+
+        return basicData;
     }
 
     @RequestMapping("getProvinceData")
