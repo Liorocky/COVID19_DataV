@@ -1,4 +1,5 @@
-<!--<script src="js/mainView.js"></script>-->
+<script src="js/china.js"></script>
+<script src="js/mainView.js"></script>
 
 <body>
     <div class="container">
@@ -12,60 +13,60 @@
         <!-- 国内外疫情标签面板 -->
         <div class="container tab-content" style="padding-top: 2em; padding-bottom: 1em;">
             <div role="tabpanel" class="tab-pane active" id="china">
-                <!--国内疫情-->
+                <!--国内疫情基础数据-->
                 <div class="container" style="margin-bottom: 2em;">
-                    <p>截至北京时间：2020-03-26 08:15</p>
+                    <p id="updateTime">截至北京时间：2020-03-26 08:15</p>
                     <div class="row" style="margin-left: 15%; padding-bottom: 1em;">
                         <div class="col-xs-4 col-md-4">
-                            <strong style="color: rgb(247, 76, 49); font-size: x-large;">328,704</strong>
+                            <strong style="color: rgb(247, 76, 49); font-size: x-large;" id="currentConfirmedCount"></strong>
                             <br>
                             <span>现存确诊</span>
                         </div>
                         <div class="col-xs-4 col-md-4">
-                            <strong style="color: rgb(93, 112, 146); font-size: x-large;">328,704</strong>
+                            <strong style="color: rgb(93, 112, 146); font-size: x-large;" id="suspectedCount"></strong>
                             <br>
-                            <span>累计死亡</span>
+                            <span>境外输入</span>
                         </div>
                         <div class="col-xs-4 col-md-4">
-                            <strong style="color: rgb(40, 183, 163); font-size: x-large;">328,704</strong>
+                            <strong style="color: rgb(40, 183, 163); font-size: x-large;" id="seriousCount"></strong>
                             <br>
-                            <span>累计治愈</span>
+                            <span>现存无症状</span>
                         </div>
                     </div>
                     <div class="row" style="margin-left: 15%">
                         <div class="col-xs-4 col-md-4">
-                            <strong style="color: rgb(247, 76, 49); font-size: x-large;">328,704</strong>
+                            <strong style="color: rgb(247, 76, 49); font-size: x-large;" id="confirmedCount"></strong>
                             <br>
-                            <span>现存确诊2</span>
+                            <span>累计确诊</span>
                         </div>
                         <div class="col-xs-4 col-md-4">
-                            <strong style="color: rgb(93, 112, 146); font-size: x-large;">328,704</strong>
+                            <strong style="color: rgb(93, 112, 146); font-size: x-large;" id="deadCount"></strong>
                             <br>
-                            <span>累计死亡2</span>
+                            <span>累计死亡</span>
                         </div>
                         <div class="col-xs-4 col-md-4">
-                            <strong style="color: rgb(40, 183, 163); font-size: x-large;">328,704</strong>
+                            <strong style="color: rgb(40, 183, 163); font-size: x-large;" id="curedCount"></strong>
                             <br>
-                            <span>累计治愈2</span>
+                            <span>累计治愈</span>
                         </div>
                     </div>
                 </div>
-<!--国内疫情地图-->
+
+            <!--国内疫情地图-->
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">国内疫情地图</h3>
-
                     </div>
-                    <div class="panel-body">
-                        疫情地图
+                    <div class="panel-body" id="chinaMap" style="width: 600px;height:400px; left: 25%">
+
                     </div>
                     <ul class="container row nav nav-pills" role="tablist">
                         <li role="presentation" class="active col-lg-offset-1 col-md-offset-1 col-sm-offset-1
-                        col-lg-5 col-md-5 col-sm-5" style="text-align: center;">
-                            <a href="#COVID19mapNow" aria-controls="China" role="tab" data-toggle="tab">现有确诊</a>
+                        col-lg-5 col-md-5 col-sm-5" style="text-align: center;" onclick="switchMap('confirmed')">
+                            <a aria-controls="China" role="tab" data-toggle="tab">累计确诊</a>
                         </li>
-                        <li role="presentation" class="col-lg-5 col-md-5 col-sm-5" style="text-align: center;">
-                            <a href="#COVID19mapAddup" aria-controls="foreign" role="tab" data-toggle="tab">累计确诊</a>
+                        <li role="presentation" class="col-lg-5 col-md-5 col-sm-5" style="text-align: center;" onclick="switchMap('suspected')">
+                            <a aria-controls="foreign" role="tab" data-toggle="tab">现存疑似</a>
                         </li>
                     </ul>
                 </div>
@@ -141,3 +142,4 @@
         </div>
     </div>
 </body>
+
