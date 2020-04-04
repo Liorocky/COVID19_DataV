@@ -23,4 +23,14 @@
         GROUP BY
             provinceName
     </select>
+
+    <select id="getTimeLineData" parameterType="java.util.Map" resultType="top.warmj.covid19_DataV.domain.Timelinedata">
+        SELECT
+            *
+        FROM
+            timelinedata
+        WHERE
+            updateTime BETWEEN #{startdate}
+            AND #{enddate}
+    </select>
 </mapper>

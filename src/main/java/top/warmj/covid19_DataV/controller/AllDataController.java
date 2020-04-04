@@ -1,10 +1,12 @@
 package top.warmj.covid19_DataV.controller;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import top.warmj.covid19_DataV.domain.BasicData;
 import top.warmj.covid19_DataV.domain.ProvinceData;
+import top.warmj.covid19_DataV.domain.Timelinedata;
 import top.warmj.covid19_DataV.service.AllDataService;
 
 import javax.annotation.Resource;
@@ -27,6 +29,12 @@ public class AllDataController {
     @ResponseBody
     public List<ProvinceData> getProvinceData() {
         return allDataService.getProvinceData();
+    }
+
+    @RequestMapping("getTimeLineData")
+    @ResponseBody
+    public List<Timelinedata> getTimeLineData(@Param("startdate") String startdate, @Param("enddate") String enddate) {
+        return allDataService.getTimeLineData(startdate, enddate);
     }
 
 }
