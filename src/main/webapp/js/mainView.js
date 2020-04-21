@@ -267,3 +267,52 @@ function switchChart(type) {
         trendCharts.setOption(curedCountOption);
     };
 }
+
+
+//国内各地区详细疫情
+
+var fold;
+var areaBlock1;
+var subBlock1;
+var subBlock2;
+var subBlock3;
+var subBlock4;
+var subBlock5;
+var areaBlock2;
+var subBlock;
+
+var provinceArray = ['安徽省','北京市','重庆市','福建省','甘肃省','广东省','广西壮族自治区','贵州省','海南省','河北省','黑龙江省','河南省','香港','湖北省','湖南省','江苏省','江西省','吉林省','辽宁省','澳门','内蒙古自治区','宁夏回族自治区','青海省','山东省','上海市','山西省','陕西省','四川省','台湾','天津市','新疆维吾尔自治区','西藏自治区','云南省','浙江省'];
+
+for (var i = 0; i < provinceArray.length; i++) {
+    $.get("api/getProvinceDetails?name="+provinceArray[i]+"").done(function (data) {
+
+        fold = $("<div class='fold'></div>");
+        var num = data.length - 1;
+        areaBlock1 = $("<div class='areaBlock1' data-toggle='collapse' href='#" + data[num].provinceName + "'></div>");
+        subBlock1 = $("<div class='subBlock1 col-md-3' ></div>").text(data[num].provinceName);
+        subBlock2 = $("<div class='subBlock2 col-md-3' ></div>").text(data[num].provinceConfirmedCount);
+        subBlock3 = $("<div class='subBlock3 col-md-2' ></div>").text(data[num].provinceSuspectedCount);
+        subBlock4 = $("<div class='subBlock4 col-md-2' ></div>").text(data[num].provinceCuredCount);
+        subBlock5 = $("<div class='subBlock5 col-md-2' ></div>").text(data[num].provinceDeadCount);
+
+        areaBlock1.append(subBlock1,subBlock2,subBlock3,subBlock4,subBlock5);
+        fold.append(areaBlock1);
+        areaBlock2 = $("<div class='areaBlock2 collapse' id="+data[0].provinceName+"></div>");
+
+        for (var j = 0; j < data.length; j++) {
+
+            subBlock = $("<div></div>");
+            subBlock1 = $("<div class='subBlock1 col-md-3' ></div>").text(data[j].cityName);
+            subBlock2 = $("<div class='subBlock2 col-md-3' ></div>").text(data[j].cityConfirmedCount);
+            subBlock3 = $("<div class='subBlock3 col-md-2' ></div>").text(data[j].citySuspectedCount);
+            subBlock4 = $("<div class='subBlock4 col-md-2' ></div>").text(data[j].cityCuredCount);
+            subBlock5 = $("<div class='subBlock5 col-md-2' ></div>").text(data[j].cityDeadCount);
+
+            subBlock.append(subBlock1,subBlock2,subBlock3,subBlock4,subBlock5);
+            areaBlock2.append(subBlock);
+        }
+        fold.append(areaBlock2);
+        $(".expand").append(fold);
+    })
+}
+
