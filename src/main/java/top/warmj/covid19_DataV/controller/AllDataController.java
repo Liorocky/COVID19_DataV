@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import top.warmj.covid19_DataV.domain.BasicData;
 import top.warmj.covid19_DataV.domain.ProvinceData;
+import top.warmj.covid19_DataV.domain.ProvinceDetails;
 import top.warmj.covid19_DataV.domain.Timelinedata;
 import top.warmj.covid19_DataV.service.AllDataService;
 
@@ -49,4 +50,9 @@ public class AllDataController {
         return allDataService.getTimeLineData(startdate, enddate);
     }
 
+    @RequestMapping("getProvinceDetails")
+    @ResponseBody
+    public List<ProvinceDetails> getProvinceDetails(@Param("name") String name) {
+        return allDataService.getProvinceDetails(name);
+    }
 }

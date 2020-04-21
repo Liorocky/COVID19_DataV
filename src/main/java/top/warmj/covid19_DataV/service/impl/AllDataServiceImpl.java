@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import top.warmj.covid19_DataV.dao.AllDataDao;
 import top.warmj.covid19_DataV.domain.BasicData;
 import top.warmj.covid19_DataV.domain.ProvinceData;
+import top.warmj.covid19_DataV.domain.ProvinceDetails;
 import top.warmj.covid19_DataV.domain.Timelinedata;
 import top.warmj.covid19_DataV.service.AllDataService;
 
@@ -34,5 +35,10 @@ public class AllDataServiceImpl implements AllDataService {
         map.put("startdate", startdate);
         map.put("enddate", enddate);
         return allDataDao.getTimeLineData(map);
+    }
+
+    @Override
+    public List<ProvinceDetails> getProvinceDetails(String name) {
+        return allDataDao.getProvinceDetails(name);
     }
 }

@@ -2,6 +2,7 @@ package top.warmj.covid19_DataV.dao;
 
 import top.warmj.covid19_DataV.domain.BasicData;
 import top.warmj.covid19_DataV.domain.ProvinceData;
+import top.warmj.covid19_DataV.domain.ProvinceDetails;
 import top.warmj.covid19_DataV.domain.Timelinedata;
 
 import java.util.List;
@@ -25,4 +26,10 @@ public interface AllDataDao {
      * @return
      */
     List<Timelinedata> getTimeLineData(Map<String, Object> map);
+
+    /**
+     * 列表 国内各地区详细疫情  现存确诊 累计确诊 累计死亡病例 累计治愈病例
+     * @return
+     */
+    List<ProvinceDetails> getProvinceDetails(String name);
 }

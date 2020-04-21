@@ -33,4 +33,25 @@
             updateTime BETWEEN #{startdate}
             AND #{enddate}
     </select>
+
+    <select id="getProvinceDetails" parameterType="java.lang.String" resultType="top.warmj.covid19_DataV.domain.ProvinceDetails">
+        SELECT
+            provinceName,
+            province_confirmedCount AS provinceConfirmedCount,
+            province_suspectedCount AS provinceSuspectedCount,
+            province_curedCount AS provinceCuredCount,
+            province_deadCount AS provinceDeadCount,
+            cityName,
+            city_confirmedCount AS cityConfirmedCount,
+            city_suspectedCount AS citySuspectedCount,
+            city_curedCount AS cityCuredCount,
+            city_deadCount AS cityDeadCount,
+            updateTime
+        FROM
+            dxyarea
+        WHERE
+            provinceName = #{name}
+        GROUP BY
+            cityName
+    </select>
 </mapper>
