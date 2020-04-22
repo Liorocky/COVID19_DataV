@@ -1,3 +1,14 @@
 .areaBlock1 > div {
     background-color: #f5f5f5;
+    font-size: 20px;
+    text-align: center;
+}
+
+.areaBox-header > div {
+    font-size: 25px;
+    text-align: center;
+}
+
+.areaBlock2 > div {
+    text-align: center;
 }
