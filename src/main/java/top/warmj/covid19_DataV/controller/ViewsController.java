@@ -14,4 +14,14 @@ public class ViewsController {
     public String mainView() {
         return "mainView";
     }
+
+    @RequestMapping("chinaView")
+    public String chinaView() {
+        return "chinaView";
+    }
+
+    @RequestMapping("foreignView")
+    public String foreignView() {
+        return "foreignView";
+    }
 }
