@@ -1,0 +1,178 @@
+<script src="js/china.js"></script>
+<script src="js/chinaView.js"></script>
+<link rel="stylesheet" type="text/css" href="css/chinaView.css">
+
+<!--国内疫情基础数据-->
+<div class="container" style="margin-bottom: 2em;">
+    <p id="updateTime">截至北京时间：2020-03-26 08:15</p>
+    <div class="row" style="margin-left: 15%; padding-bottom: 1em;">
+        <div class="col-xs-4 col-md-4">
+            <strong style="color: #F74C31; font-size: x-large;" id="currentConfirmedCount"></strong>
+            <br>
+            <span>现存确诊</span>
+        </div>
+        <div class="col-xs-4 col-md-4">
+            <strong style="color: #F78207; font-size: x-large;" id="suspectedCount"></strong>
+            <br>
+            <span>境外输入</span>
+        </div>
+        <div class="col-xs-4 col-md-4">
+            <strong style="color: #A25A4E; font-size: x-large;" id="seriousCount"></strong>
+            <br>
+            <span>现存无症状</span>
+        </div>
+    </div>
+    <div class="row" style="margin-left: 15%">
+        <div class="col-xs-4 col-md-4">
+            <strong style="color: #AE212C; font-size: x-large;" id="confirmedCount"></strong>
+            <br>
+            <span>累计确诊</span>
+        </div>
+        <div class="col-xs-4 col-md-4">
+            <strong style="color: #627092; font-size: x-large;" id="deadCount"></strong>
+            <br>
+            <span>累计死亡</span>
+        </div>
+        <div class="col-xs-4 col-md-4">
+            <strong style="color: #28B7A3; font-size: x-large;" id="curedCount"></strong>
+            <br>
+            <span>累计治愈</span>
+        </div>
+    </div>
+</div>
+
+<!--国内疫情地图-->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">国内疫情地图</h3>
+    </div>
+    <div class="panel-body" id="chinaMap" style="width: 600px;height:400px; left: 25%">
+
+    </div>
+    <ul class="container row nav nav-pills" role="tablist">
+        <li role="presentation" class="active col-lg-offset-1 col-md-offset-1 col-sm-offset-1
+                        col-lg-5 col-md-5 col-sm-5" style="text-align: center;" onclick="switchMap('confirmed')">
+            <a aria-controls="China" role="tab" data-toggle="tab">累计确诊</a>
+        </li>
+        <li role="presentation" class="col-lg-5 col-md-5 col-sm-5" style="text-align: center;" onclick="switchMap('suspected')">
+            <a aria-controls="foreign" role="tab" data-toggle="tab">现存疑似</a>
+        </li>
+    </ul>
+</div>
+<!--国内趋势走势图-->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">国内疫情趋势图</h3>
+    </div>
+    <div class="panel-body" id="trendCharts" style="width: 900px;height:400px; left: 12%; position: relative">
+
+    </div>
+    <ul class="container row nav nav-pills" role="tablist">
+        <li role="presentation" class="active col-lg-offset-2 col-md-offset-2 col-sm-offset-2
+                        col-lg-2 col-md-2 " style="text-align: center;" onclick="switchChart('confirmedCount')">
+            <a aria-controls="China" role="tab" data-toggle="tab">
+                累计确诊</a>
+        </li>
+        <li role="presentation" class="col-lg-2 col-md-2 " style="text-align: center;" onclick="switchChart('currentConfirmedCount')">
+            <a aria-controls="foreign" role="tab" data-toggle="tab">
+                现存确诊</a>
+        </li>
+        <li role="presentation" class="col-lg-2 col-md-2 " style="text-align: center;" onclick="switchChart('deadCount')">
+            <a aria-controls="foreign" role="tab" data-toggle="tab">
+                累计死亡</a>
+        </li>
+        <li role="presentation" class="col-lg-2 col-md-2 " style="text-align: center;" onclick="switchChart('curedCount')">
+            <a aria-controls="foreign" role="tab" data-toggle="tab">
+                累计治愈</a>
+        </li>
+
+    </ul>
+</div>
+<!--国内各地区详细疫情-->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">国内各地区详细疫情</h3>
+    </div>
+    <div class="panel-body">
+        <div class="areaBox">
+            <!--                            表头-->
+            <div class="areaBox-header">
+                <div class="subBlock1 col-md-3" style="background-color: #E3E7F3">
+                    地区
+                </div>
+                <div class="subBlock2 col-md-3" style="background-color: #95DB9A">
+                    现存确诊
+                </div>
+                <div class="subBlock3 col-md-2" style="background-color: #B4C0D5">
+                    累计确诊
+                </div>
+                <div class="subBlock4 col-md-2" style="background-color: #E69A8D">
+                    死亡
+                </div>
+                <div class="subBlock5 col-md-2" style="background-color: #F3BAB0">
+                    治愈
+                </div>
+            </div>
+            <!--                            固定表头-->
+
+            <div class="expand">
+                <!--                                <div class="fold">-->
+                <!--                                    <div class="areaBlock1" data-toggle="collapse" href="#陕西">-->
+                <!--                                        <div class="subBlock1 col-md-3" >-->
+                <!--                                            陕西-->
+                <!--                                        </div>-->
+                <!--                                        <div class="subBlock2 col-md-3">-->
+                <!--                                            231-->
+                <!--                                        </div>-->
+                <!--                                        <div class="subBlock3 col-md-2">-->
+                <!--                                            13-->
+                <!--                                        </div>-->
+                <!--                                        <div class="subBlock4 col-md-2">-->
+                <!--                                            223-->
+                <!--                                        </div>-->
+                <!--                                        <div class="subBlock5 col-md-2">-->
+                <!--                                            255-->
+                <!--                                        </div>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="areaBlock2 collapse" id="陕西">-->
+                <!--                                        <div class="subBlock">-->
+                <!--                                            <div class="subBlock1 col-md-3">-->
+                <!--                                                西安-->
+                <!--                                            </div>-->
+                <!--                                            <div class="subBlock2 col-md-3">-->
+                <!--                                                231-->
+                <!--                                            </div>-->
+                <!--                                            <div class="subBlock3 col-md-2">-->
+                <!--                                                13-->
+                <!--                                            </div>-->
+                <!--                                            <div class="subBlock4 col-md-2">-->
+                <!--                                                223-->
+                <!--                                            </div>-->
+                <!--                                            <div class="subBlock5 col-md-2">-->
+                <!--                                                255-->
+                <!--                                            </div>-->
+                <!--                                        </div>-->
+                <!--                                        <div class="subBlock">-->
+                <!--                                            <div class="subBlock1 col-md-3">-->
+                <!--                                                咸阳-->
+                <!--                                            </div>-->
+                <!--                                            <div class="subBlock2 col-md-3">-->
+                <!--                                                231-->
+                <!--                                            </div>-->
+                <!--                                            <div class="subBlock3 col-md-2">-->
+                <!--                                                13-->
+                <!--                                            </div>-->
+                <!--                                            <div class="subBlock4 col-md-2">-->
+                <!--                                                223-->
+                <!--                                            </div>-->
+                <!--                                            <div class="subBlock5 col-md-2">-->
+                <!--                                                255-->
+                <!--                                            </div>-->
+                <!--                                        </div>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+            </div>
+
+        </div>
+    </div>
+</div>
