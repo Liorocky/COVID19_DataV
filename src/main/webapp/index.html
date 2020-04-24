@@ -15,7 +15,21 @@
 
 <div id="mainView">
     <div class="container">
+       <div><p style="margin-top:14px; font-size: 16px; float: left;"><strong>新闻：</strong></p>
+           <marquee onmouseover='this.stop()' onmouseout='this.start()'
+                     direction="up" behavior="scroll" scrollamount="1"
+                     scrolldelay="0" loop="-1" width="300" height="20"
+                     hspace="15" vspace="15">
 
+                <ul style="list-style: none; padding-left: 2px; font-weight: bold;">
+                    <li>第1条新闻的测试版加长plus</li>
+                    <li>第2条新闻的测试版加长plus</li>
+                    <li>第3条新闻的测试版加长plus</li>
+                    <li>第4条新闻的测试版加长plus</li>
+                </ul>
+
+            </marquee>
+        </div>
         <!-- 国内外疫情标签 -->
         <ul class="container row nav nav-tabs" role="tablist">
             <li role="presentation" class="active col-md-6 col-md-6 col-sm-6" style="text-align: center;"><a href="#china" aria-controls="China" role="tab" data-toggle="tab">国内疫情</a></li>
