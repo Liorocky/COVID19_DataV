@@ -1,9 +1,6 @@
 package top.warmj.covid19_DataV.service;
 
-import top.warmj.covid19_DataV.domain.BasicData;
-import top.warmj.covid19_DataV.domain.ProvinceData;
-import top.warmj.covid19_DataV.domain.ProvinceDetails;
-import top.warmj.covid19_DataV.domain.Timelinedata;
+import top.warmj.covid19_DataV.domain.*;
 
 import java.util.List;
 
@@ -31,4 +28,10 @@ public interface AllDataService {
      * @return
      */
     List<ProvinceDetails> getProvinceDetails(String name);
+
+    /**
+     * 滚动条 获取新闻
+     * @return
+     */
+    List<News> getNews();
 }

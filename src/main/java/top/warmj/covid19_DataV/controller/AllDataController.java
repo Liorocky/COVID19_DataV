@@ -4,10 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import top.warmj.covid19_DataV.domain.BasicData;
-import top.warmj.covid19_DataV.domain.ProvinceData;
-import top.warmj.covid19_DataV.domain.ProvinceDetails;
-import top.warmj.covid19_DataV.domain.Timelinedata;
+import top.warmj.covid19_DataV.domain.*;
 import top.warmj.covid19_DataV.service.AllDataService;
 
 import javax.annotation.Resource;
@@ -54,5 +51,11 @@ public class AllDataController {
     @ResponseBody
     public List<ProvinceDetails> getProvinceDetails(@Param("name") String name) {
         return allDataService.getProvinceDetails(name);
+    }
+
+    @RequestMapping("getNews")
+    @ResponseBody
+    public List<News> getNews() {
+        return allDataService.getNews();
     }
 }

@@ -54,4 +54,17 @@
         GROUP BY
             cityName
     </select>
+
+    <select id="getNews" resultType="top.warmj.covid19_DataV.domain.News">
+        SELECT
+            id,
+            pubDate,
+            title,
+            sourceUrl
+        FROM
+            dxynews
+        ORDER BY
+            pubDate DESC
+            LIMIT 10
+    </select>
 </mapper>
