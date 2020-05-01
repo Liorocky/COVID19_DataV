@@ -1,12 +1,22 @@
-//国内基础数据
+//基础数据
 $.get("api/getBasicData").done(function (data) {
-    $("#updateTime").text("截至北京时间：" + data.updateTime);
+    //国内基础数据
+    $(".updateTime").text("截至北京时间：" + data.updateTime);
     $("#currentConfirmedCount").text(data.currentConfirmedCount);
     $("#suspectedCount").text(data.suspectedCount);
     $("#seriousCount").text(data.seriousCount);
     $("#confirmedCount").text(data.confirmedCount);
     $("#deadCount").text(data.deadCount);
     $("#curedCount").text(data.curedCount);
+
+    //全球基础数据
+    var text = data.globalStatistics;
+    var globalStatistics = text.replace(/\'/g, '\"');
+    globalStatistics = JSON.parse(globalStatistics);
+    $("#currentConfirmedCountForeign").text(globalStatistics.currentConfirmedCount);
+    $("#confirmedCountForeign").text(globalStatistics.confirmedCount);
+    $("#deadCountForeign").text(globalStatistics.deadCount);
+    $("#curedCountForeign").text(globalStatistics.curedCount);
 })
 
 //国内疫情地图

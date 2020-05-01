@@ -1,3 +1,4 @@
+//新闻滚动条
 $.get("api/getNews").done(function (data) {
     var ul = $("<ul></ul>");
     var li;
