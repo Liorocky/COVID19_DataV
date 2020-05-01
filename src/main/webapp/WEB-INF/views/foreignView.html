@@ -1,25 +1,67 @@
 <!--国外疫情-->
-<div class="container-fluid">
-    <div class="row" style="margin-left: 15%">
+<div class="container" style="margin-bottom: 2em;">
+    <p id="updateTime">截至北京时间：2020-03-26 08:15</p>
+    <div class="row" style="margin-left: 15%; padding-bottom: 1em;">
         <div class="col-xs-6 col-md-3">
-            <strong style="color: rgb(247, 76, 49);">328,704</strong>
+            <strong style="color: #F74C31; font-size: x-large;" id="currentConfirmedCountForeign">123123</strong>
             <br>
             <span>现存确诊</span>
         </div>
         <div class="col-xs-6 col-md-3">
-            <strong style="color: rgb(174, 33, 44);">328,704</strong>
+            <strong style="color: #AE212C; font-size: x-large;" id="confirmedCountForeign">12312</strong>
             <br>
             <span>累计确诊</span>
         </div>
         <div class="col-xs-6 col-md-3">
-            <strong style="color: rgb(93, 112, 146);;">328,704</strong>
+            <strong style="color: #627092; font-size: x-large;" id="deadCountForeign">1231</strong>
             <br>
             <span>累计死亡</span>
         </div>
         <div class="col-xs-6 col-md-3">
-            <strong style="color: rgb(40, 183, 163);">328,704</strong>
+            <strong style="color: #28B7A3; font-size: x-large;" id="curedCountForeign">123123</strong>
             <br>
             <span>累计治愈</span>
         </div>
     </div>
+</div>
+
+<!--重点国家疫情数据-->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">重点国家疫情数据</h3>
+    </div>
+    <div class="panel-body" id="severe" style="width: 600px;height:400px; left: 25%">
+        重点国家疫情数据
+    </div>
+
+</div>
+
+<!--国外趋势走势图-->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">国外趋势走势图</h3>
+    </div>
+    <div class="panel-body" id="trendChartsForeign" style="width: 900px;height:400px; left: 12%; position: relative">
+
+    </div>
+    <ul class="container row nav nav-pills" role="tablist">
+        <li role="presentation" class="active col-lg-offset-2 col-md-offset-2 col-sm-offset-2
+                        col-lg-2 col-md-2 " style="text-align: center;" onclick="">
+            <a role="tab" data-toggle="tab">
+                累计确诊</a>
+        </li>
+        <li role="presentation" class="col-lg-2 col-md-2 " style="text-align: center;" onclick="">
+            <a role="tab" data-toggle="tab">
+                现存确诊</a>
+        </li>
+        <li role="presentation" class="col-lg-2 col-md-2 " style="text-align: center;" onclick="">
+            <a role="tab" data-toggle="tab">
+                累计死亡</a>
+        </li>
+        <li role="presentation" class="col-lg-2 col-md-2 " style="text-align: center;" onclick="">
+            <a role="tab" data-toggle="tab">
+                累计治愈</a>
+        </li>
+
+    </ul>
 </div>
