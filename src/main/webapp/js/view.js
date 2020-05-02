@@ -340,3 +340,55 @@ for (var i = 0; i < provinceArray.length; i++) {
     })
 }
 
+//重点国家疫情数据
+$.get("api/getForeignDetails").done(function (data) {
+    var provinceConfirmedCount = $.extend([], data);
+    var provinceDeadCount = $.extend([], data);;
+    var provinceCuredCount = $.extend([], data);;
+
+    provinceConfirmedCount.sort(sortBy(("provinceConfirmedCount")));
+    provinceDeadCount.sort(sortBy(("provinceDeadCount")));
+    provinceCuredCount.sort(sortBy(("provinceCuredCount")));
+
+    console.log(provinceConfirmedCount);
+    console.log(provinceDeadCount);
+    console.log(provinceCuredCount);
+
+    for (var i = 0; i < 10; i++) {
+        var tr1 = $("<tr></tr>");
+        var tr2 = $("<tr></tr>");
+        var tr3 = $("<tr></tr>");
+
+        var td = $("<td></td>").text(provinceConfirmedCount[i].provinceName);
+        tr1.append(td);
+        var td = $("<td></td>").text(provinceConfirmedCount[i].provinceConfirmedCount);
+        tr1.append(td);
+        var td = $("<td></td>").text(i + 1);
+        tr1.append(td);
+
+        var td = $("<td></td>").text(provinceDeadCount[i].provinceName);
+        tr2.append(td);
+        var td = $("<td></td>").text(provinceDeadCount[i].provinceDeadCount);
+        tr2.append(td);
+        var td = $("<td></td>").text(i + 1);
+        tr2.append(td);
+
+        var td = $("<td></td>").text(provinceCuredCount[i].provinceName);
+        tr3.append(td);
+        var td = $("<td></td>").text(provinceCuredCount[i].provinceCuredCount);
+        tr3.append(td);
+        var td = $("<td></td>").text(i + 1);
+        tr3.append(td);
+
+        $("#table-ConfirmedCount > tbody").append(tr1);
+        $("#table-DeadCount > tbody").append(tr2);
+        $("#table-CuredCount > tbody").append(tr3);
+    }
+})
+
+//比较数组对象
+function sortBy(field) {
+    return function(a,b) {
+        return parseInt(b[field]) - parseInt(a[field]);
+    }
+}

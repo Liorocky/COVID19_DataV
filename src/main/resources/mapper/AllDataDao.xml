@@ -67,4 +67,18 @@
             pubDate DESC
             LIMIT 10
     </select>
+
+    <select id="getForeignDetails" resultType="top.warmj.covid19_DataV.domain.ProvinceDetails">
+        SELECT
+            provinceName,
+            province_confirmedCount AS provinceConfirmedCount,
+            province_curedCount AS provinceCuredCount,
+            province_deadCount AS provinceDeadCount
+        FROM
+            dxyarea
+        WHERE
+            countryName <![CDATA[<>]]> '中国'
+        GROUP BY
+            provinceName
+    </select>
 </mapper>

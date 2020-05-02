@@ -43,4 +43,9 @@ public class AllDataServiceImpl implements AllDataService {
     public List<News> getNews() {
         return allDataDao.getNews();
     }
+
+    @Override
+    public List<ProvinceDetails> getForeignDetails() {
+        return allDataDao.getForeignDetails();
+    }
 }

@@ -35,4 +35,10 @@ public interface AllDataDao {
      * @return
      */
     List<News> getNews();
+
+    /**
+     * 重点国家疫情数据 除中国以外
+     * @return
+     */
+    List<ProvinceDetails> getForeignDetails();
 }

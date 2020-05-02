@@ -58,4 +58,10 @@ public class AllDataController {
     public List<News> getNews() {
         return allDataService.getNews();
     }
+
+    @RequestMapping("getForeignDetails")
+    @ResponseBody
+    public List<ProvinceDetails> getForeignDetails() {
+        return allDataService.getForeignDetails();
+    }
 }
