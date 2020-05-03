@@ -2,7 +2,6 @@ package top.warmj.covid19_DataV.domain;
 
 public class BasicData {
 
-  private String id;
   private String currentConfirmedCount;
   private String confirmedCount;
   private String suspectedCount;
@@ -19,14 +18,6 @@ public class BasicData {
   private String globalStatistics;
   private String globalOtherTrendChartData;
   private String updateTime;
-
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
 
 
   public String getCurrentConfirmedCount() {
