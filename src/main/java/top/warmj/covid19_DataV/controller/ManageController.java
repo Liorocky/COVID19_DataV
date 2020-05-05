@@ -1,5 +1,6 @@
 package top.warmj.covid19_DataV.controller;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,20 +18,20 @@ public class ManageController {
 
     @RequestMapping("/updateDXYArea")
     @ResponseBody
-    public int updateDXYArea(){
-        String url = "https://gitcdn.xyz/repo/BlankerL/DXY-COVID-19-Data/master/csv/DXYArea.csv";
+    public int updateDXYArea(@Param("url") String url){
+//        url = "https://gitcdn.xyz/repo/BlankerL/DXY-COVID-19-Data/master/csv/DXYArea.csv";
         String fileName = "DXYArea.csv"; //文件名字
         String tempTableName = "dxyarea_temp"; //临时表
         String tableName = "dxyarea"; //生产表
-        String field = "(continentName,@dummy,countryName,@dummy,provinceName,@dummy,@dummy,province_confirmedCount,province_suspectedCount,province_curedCount,province_deadCount,updateTime,cityName,@dummy,@dummy,city_confirmedCount,city_suspectedCount,city_curedCount,city_deadCount)";
+        String field = "(continentName,@dummy,countryName,@dummy,provinceName,@dummy,@dummy,province_confirmedCount,province_suspectedCount,province_curedCount,province_deadCount,cityName,@dummy,@dummy,city_confirmedCount,city_suspectedCount,city_curedCount,city_deadCount,updateTime)";
 
         return updateDate(url, fileName, tempTableName, tableName, field);
     }
 
     @RequestMapping("/updateDXYOverall")
     @ResponseBody
-    public int updateDXYOverall(){
-        String url = "https://gitcdn.xyz/repo/BlankerL/DXY-COVID-19-Data/master/csv/DXYOverall.csv";
+    public int updateDXYOverall(@Param("url") String url){
+//        String url = "https://gitcdn.xyz/repo/BlankerL/DXY-COVID-19-Data/master/csv/DXYOverall.csv";
         String fileName = "DXYOverall.csv"; //文件名字
         String tempTableName = "dxyoverall_temp"; //临时表
         String tableName = "dxyoverall"; //生产表
@@ -41,8 +42,8 @@ public class ManageController {
 
     @RequestMapping("/updateDXYNews")
     @ResponseBody
-    public int updateDXYNews(){
-        String url = "https://gitcdn.xyz/repo/BlankerL/DXY-COVID-19-Data/master/csv/DXYNews.csv";
+    public int updateDXYNews(@Param("url") String url){
+//        String url = "https://gitcdn.xyz/repo/BlankerL/DXY-COVID-19-Data/master/csv/DXYNews.csv";
         String fileName = "DXYNews.csv"; //文件名字
         String tempTableName = "dxynews_temp"; //临时表
         String tableName = "dxynews"; //生产表

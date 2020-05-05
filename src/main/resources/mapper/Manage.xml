@@ -3,7 +3,7 @@
 
 <mapper namespace="top.warmj.covid19_DataV.dao.ManageDao">
     <update id="importFromPath" parameterType="java.lang.String" statementType="STATEMENT">
-        LOAD DATA INFILE ${param1}
+        LOAD DATA LOCAL INFILE ${param1}
         INTO TABLE ${param2}
         CHARACTER SET utf8
         FIELDS TERMINATED BY ','
