@@ -1,3 +1,9 @@
+window.onresize = function() {
+    chinaMap.resize();
+    trendChartsForeign.resize();
+    trendCharts.resize();
+};
+
 //基础数据
 var trendChartsForeign;
 var confirmedCountOptionForeign; //累计确诊
