@@ -5,12 +5,10 @@ public class ProvinceDetails {
 
   private String provinceName;
   private String provinceConfirmedCount;
-  private String provinceSuspectedCount;
   private String provinceCuredCount;
   private String provinceDeadCount;
   private String cityName;
   private String cityConfirmedCount;
-  private String citySuspectedCount;
   private String cityCuredCount;
   private String cityDeadCount;
   private String updateTime;
@@ -29,14 +27,6 @@ public class ProvinceDetails {
 
   public void setProvinceConfirmedCount(String provinceConfirmedCount) {
     this.provinceConfirmedCount = provinceConfirmedCount;
-  }
-
-  public String getProvinceSuspectedCount() {
-    return provinceSuspectedCount;
-  }
-
-  public void setProvinceSuspectedCount(String provinceSuspectedCount) {
-    this.provinceSuspectedCount = provinceSuspectedCount;
   }
 
   public String getProvinceCuredCount() {
@@ -69,14 +59,6 @@ public class ProvinceDetails {
 
   public void setCityConfirmedCount(String cityConfirmedCount) {
     this.cityConfirmedCount = cityConfirmedCount;
-  }
-
-  public String getCitySuspectedCount() {
-    return citySuspectedCount;
-  }
-
-  public void setCitySuspectedCount(String citySuspectedCount) {
-    this.citySuspectedCount = citySuspectedCount;
   }
 
   public String getCityCuredCount() {
