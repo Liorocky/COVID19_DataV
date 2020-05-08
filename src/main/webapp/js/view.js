@@ -186,10 +186,10 @@ for (var i = 0; i < 3; i++) {
     $.get("api/getProvinceDetails?name="+provinceArray[i]+"").done(function (data) {
         fold = $("<div class='fold'></div>");
         areaBlock1 = $("<div class='areaBlock1' data-toggle='collapse' href='#" + data[0].provinceName + "'></div>");
-        subBlock1 = $("<div class='subBlock1 col-md-3' style='cursor: pointer'></div>").text(data[0].provinceName);
-        subBlock2 = $("<div class='subBlock2 col-md-3'></div>").text(data[0].provinceConfirmedCount);
-        subBlock3 = $("<div class='subBlock3 col-md-3' ></div>").text(data[0].provinceDeadCount);
-        subBlock4 = $("<div class='subBlock4 col-md-3' ></div>").text(data[0].provinceCuredCount);
+        subBlock1 = $("<div class='subBlock1 col-xs-3 col-md-3' style='cursor: pointer'></div>").text(data[0].provinceName);
+        subBlock2 = $("<div class='subBlock2 col-xs-3 col-md-3'></div>").text(data[0].provinceConfirmedCount);
+        subBlock3 = $("<div class='subBlock3 col-xs-3 col-md-3' ></div>").text(data[0].provinceDeadCount);
+        subBlock4 = $("<div class='subBlock4 col-xs-3 col-md-3' ></div>").text(data[0].provinceCuredCount);
 
         areaBlock1.append(subBlock1,subBlock2,subBlock3,subBlock4);
         fold.append(areaBlock1);
@@ -199,16 +199,16 @@ for (var i = 0; i < 3; i++) {
             for (var k=0; k<=j; k++){
                 if (k%2 == 0){
                     subBlock = $("<div></div>");
-                    subBlock1 = $("<div class='subBlock1 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[j].cityName);
-                    subBlock2 = $("<div class='subBlock2 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[j].cityConfirmedCount);
-                    subBlock3 = $("<div class='subBlock3 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[j].cityDeadCount);
-                    subBlock4 = $("<div class='subBlock4 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[j].cityCuredCount);
+                    subBlock1 = $("<div class='subBlock1 col-xs-3 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[j].cityName);
+                    subBlock2 = $("<div class='subBlock2 col-xs-3 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[j].cityConfirmedCount);
+                    subBlock3 = $("<div class='subBlock3 col-xs-3 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[j].cityDeadCount);
+                    subBlock4 = $("<div class='subBlock4 col-xs-3 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[j].cityCuredCount);
                 }else{
                     subBlock = $("<div></div>");
-                    subBlock1 = $("<div class='subBlock1 col-md-3'></div>").text(data[j].cityName);
-                    subBlock2 = $("<div class='subBlock2 col-md-3' ></div>").text(data[j].cityConfirmedCount);
-                    subBlock3 = $("<div class='subBlock3 col-md-3' ></div>").text(data[j].cityDeadCount);
-                    subBlock4 = $("<div class='subBlock4 col-md-3' ></div>").text(data[j].cityCuredCount);
+                    subBlock1 = $("<div class='subBlock1 col-xs-3 col-md-3'></div>").text(data[j].cityName);
+                    subBlock2 = $("<div class='subBlock2 col-xs-3 col-md-3' ></div>").text(data[j].cityConfirmedCount);
+                    subBlock3 = $("<div class='subBlock3 col-xs-3 col-md-3' ></div>").text(data[j].cityDeadCount);
+                    subBlock4 = $("<div class='subBlock4 col-xs-3 col-md-3' ></div>").text(data[j].cityCuredCount);
                 }
             }
             subBlock.append(subBlock1,subBlock2,subBlock3,subBlock4);
@@ -232,10 +232,10 @@ function getAllProvinceDetails() {
         for (var i = 0; i < data.length; i++) {
             fold = $("<div class='fold'></div>");
             areaBlock1 = $("<div class='areaBlock1' data-toggle='collapse' href='#" + data[i][0].provinceName + "'></div>");
-            subBlock1 = $("<div class='subBlock1 col-md-3' style='cursor: pointer'></div>").text(data[i][0].provinceName);
-            subBlock2 = $("<div class='subBlock2 col-md-3'></div>").text(data[i][0].provinceConfirmedCount);
-            subBlock3 = $("<div class='subBlock3 col-md-3' ></div>").text(data[i][0].provinceDeadCount);
-            subBlock4 = $("<div class='subBlock4 col-md-3' ></div>").text(data[i][0].provinceCuredCount);
+            subBlock1 = $("<div class='subBlock1 col-xs-3 col-md-3' style='cursor: pointer'></div>").text(data[i][0].provinceName);
+            subBlock2 = $("<div class='subBlock2 col-xs-3 col-md-3'></div>").text(data[i][0].provinceConfirmedCount);
+            subBlock3 = $("<div class='subBlock3 col-xs-3 col-md-3' ></div>").text(data[i][0].provinceDeadCount);
+            subBlock4 = $("<div class='subBlock4 col-xs-3 col-md-3' ></div>").text(data[i][0].provinceCuredCount);
 
             areaBlock1.append(subBlock1,subBlock2,subBlock3,subBlock4);
             fold.append(areaBlock1);
@@ -245,16 +245,16 @@ function getAllProvinceDetails() {
                 for (var k=0; k<=j; k++){
                     if (k%2 == 0){
                         subBlock = $("<div></div>");
-                        subBlock1 = $("<div class='subBlock1 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[i][j].cityName);
-                        subBlock2 = $("<div class='subBlock2 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[i][j].cityConfirmedCount);
-                        subBlock3 = $("<div class='subBlock3 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[i][j].cityDeadCount);
-                        subBlock4 = $("<div class='subBlock4 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[i][j].cityCuredCount);
+                        subBlock1 = $("<div class='subBlock1 col-xs-3 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[i][j].cityName);
+                        subBlock2 = $("<div class='subBlock2 col-xs-3 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[i][j].cityConfirmedCount);
+                        subBlock3 = $("<div class='subBlock3 col-xs-3 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[i][j].cityDeadCount);
+                        subBlock4 = $("<div class='subBlock4 col-xs-3 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[i][j].cityCuredCount);
                     }else{
                         subBlock = $("<div></div>");
-                        subBlock1 = $("<div class='subBlock1 col-md-3'></div>").text(data[i][j].cityName);
-                        subBlock2 = $("<div class='subBlock2 col-md-3' ></div>").text(data[i][j].cityConfirmedCount);
-                        subBlock3 = $("<div class='subBlock3 col-md-3' ></div>").text(data[i][j].cityDeadCount);
-                        subBlock4 = $("<div class='subBlock4 col-md-3' ></div>").text(data[i][j].cityCuredCount);
+                        subBlock1 = $("<div class='subBlock1 col-xs-3 col-md-3'></div>").text(data[i][j].cityName);
+                        subBlock2 = $("<div class='subBlock2 col-xs-3 col-md-3' ></div>").text(data[i][j].cityConfirmedCount);
+                        subBlock3 = $("<div class='subBlock3 col-xs-3 col-md-3' ></div>").text(data[i][j].cityDeadCount);
+                        subBlock4 = $("<div class='subBlock4 col-xs-3 col-md-3' ></div>").text(data[i][j].cityCuredCount);
                     }
                 }
                 subBlock.append(subBlock1,subBlock2,subBlock3,subBlock4);

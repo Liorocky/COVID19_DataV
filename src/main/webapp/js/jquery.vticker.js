@@ -7,10 +7,10 @@
 (function ($) {
     $.fn.vTicker = function (options) {
         var defaults = {
-            speed: 700,
-            pause: 4000,
+            speed: 1000, //每次滚动持续时间，单位为毫秒
+            pause: 6000, //滚动间隔，单位为毫秒
             showItems: 3,
-            animation: '',
+            animation: 'fade',
             mousePause: true,
             isPaused: false,
             direction: 'up',
