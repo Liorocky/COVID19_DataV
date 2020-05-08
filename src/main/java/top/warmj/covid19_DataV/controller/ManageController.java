@@ -35,7 +35,7 @@ public class ManageController {
         String fileName = "DXYOverall.csv"; //文件名字
         String tempTableName = "dxyoverall_temp"; //临时表
         String tableName = "dxyoverall"; //生产表
-        String field = "(@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,currentConfirmedCount,confirmedCount,suspectedCount,curedCount,deadCount,seriousCount,suspectedIncr,currentConfirmedIncr,confirmedIncr,curedIncr,deadIncr,seriousIncr,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,foreignStatistics,globalStatistics,globalOtherTrendChartData,updateTime)";
+        String field = "(@dummy,@dummy,@dummy,@dummy,currentConfirmedCount,confirmedCount,suspectedCount,curedCount,deadCount,seriousCount,suspectedIncr,currentConfirmedIncr,confirmedIncr,curedIncr,deadIncr,seriousIncr,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,@dummy,foreignStatistics,globalStatistics,globalOtherTrendChartData,updateTime)";
 
         return updateDate(url, fileName, tempTableName, tableName, field);
     }

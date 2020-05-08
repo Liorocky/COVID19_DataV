@@ -8,6 +8,7 @@ import top.warmj.covid19_DataV.domain.*;
 import top.warmj.covid19_DataV.service.AllDataService;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -51,6 +52,24 @@ public class AllDataController {
     @ResponseBody
     public List<ProvinceDetails> getProvinceDetails(@Param("name") String name) {
         return allDataService.getProvinceDetails(name);
+    }
+
+    @RequestMapping("getAllProvinceDetails")
+    @ResponseBody
+    public List<List> getAllProvinceDetails() {
+        List<List> list = new ArrayList<>();
+        String[] provinceArray = {"安徽省","北京市","重庆市","福建省","甘肃省",
+                "广东省","广西壮族自治区","贵州省","海南省","河北省","黑龙江省",
+                "河南省","香港","湖北省","湖南省","江苏省","江西省",
+                "吉林省","辽宁省", "澳门","内蒙古自治区","宁夏回族自治区",
+                "青海省","山东省", "上海市","山西省","陕西省","四川省","台湾","天津市",
+                "新疆维吾尔自治区","西藏自治区","云南省","浙江省"};
+
+        for (int i = 0; i < provinceArray.length; i++) {
+            list.add(allDataService.getProvinceDetails(provinceArray[i]));
+        }
+
+        return list;
     }
 
     @RequestMapping("getNews")

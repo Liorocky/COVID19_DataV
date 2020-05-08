@@ -38,12 +38,10 @@
         SELECT
             provinceName,
             province_confirmedCount AS provinceConfirmedCount,
-            province_suspectedCount AS provinceSuspectedCount,
             province_curedCount AS provinceCuredCount,
             province_deadCount AS provinceDeadCount,
             cityName,
             city_confirmedCount AS cityConfirmedCount,
-            city_suspectedCount AS citySuspectedCount,
             city_curedCount AS cityCuredCount,
             city_deadCount AS cityDeadCount,
             updateTime
@@ -53,6 +51,8 @@
             provinceName = #{name}
         GROUP BY
             cityName
+        ORDER BY
+            updateTime DESC
     </select>
 
     <select id="getNews" resultType="top.warmj.covid19_DataV.domain.News">

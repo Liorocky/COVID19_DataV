@@ -1,15 +1,9 @@
-window.onresize = function() {
-    chinaMap.resize();
-    trendChartsForeign.resize();
-    trendCharts.resize();
-};
-
-//基础数据
-var trendChartsForeign;
-var confirmedCountOptionForeign; //累计确诊
-var currentConfirmedCountOptionForeign; //现存确诊
-var deadCountOptionForeign; //累计死亡
-var curedCountOptionForeign; //累计治愈
+//基础数据 国外趋势走势图
+var trendChartsForeign; //国外趋势图
+var confirmedCountOptionForeign = $.extend(true, {}, basicAreaChartOption); //累计确诊
+var currentConfirmedCountOptionForeign = $.extend(true, {}, basicAreaChartOption); //现存确诊
+var deadCountOptionForeign = $.extend(true, {}, basicAreaChartOption); //累计死亡
+var curedCountOptionForeign = $.extend(true, {}, basicAreaChartOption); //累计治愈
 $.get("api/getBasicData").done(function (data) {
     //国内基础数据
     $(".updateTime").text("截至北京时间：" + data.updateTime);
@@ -48,101 +42,21 @@ $.get("api/getBasicData").done(function (data) {
             curedCountDataForeign.push(data[i].curedCount);
         }
 
-        confirmedCountOptionForeign = {
-            title: {
-                text: "累计确诊",
-                left: 'center'
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: updateTimeForeign
-            },
-            yAxis: {
-                type: 'value',
-                min: function (value) {
-                    return value.min - 1000;
-                },
-                max: 'dataMax'
-            },
-            series: [{
-                data: confirmedCountDataForeign,
-                type: 'line',
-                areaStyle: {}
-            }]
-        };
+        confirmedCountOptionForeign.title.text = "累计确诊";
+        confirmedCountOptionForeign.xAxis.data = updateTimeForeign;
+        confirmedCountOptionForeign.series[0].data = confirmedCountDataForeign;
 
-        currentConfirmedCountOptionForeign = {
-            title: {
-                text: "现存确诊",
-                left: 'center'
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: updateTimeForeign
-            },
-            yAxis: {
-                type: 'value',
-                min: function (value) {
-                    return value.min - 1000;
-                },
-                max: 'dataMax'
-            },
-            series: [{
-                data: currentConfirmedCountDataForeign,
-                type: 'line',
-                areaStyle: {}
-            }]
-        };
+        currentConfirmedCountOptionForeign.title.text = "现存确诊";
+        currentConfirmedCountOptionForeign.xAxis.data = updateTimeForeign;
+        currentConfirmedCountOptionForeign.series[0].data = currentConfirmedCountDataForeign;
 
-        deadCountOptionForeign = {
-            title: {
-                text: "累计死亡",
-                left: 'center'
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: updateTimeForeign
-            },
-            yAxis: {
-                type: 'value',
-                min: function (value) {
-                    return value.min - 1000;
-                },
-                max: 'dataMax'
-            },
-            series: [{
-                data: deadCountDataForeign,
-                type: 'line',
-                areaStyle: {}
-            }]
-        };
+        deadCountOptionForeign.title.text = "累计死亡";
+        deadCountOptionForeign.xAxis.data = updateTimeForeign;
+        deadCountOptionForeign.series[0].data = deadCountDataForeign;
 
-        curedCountOptionForeign = {
-            title: {
-                text: "累计治愈",
-                left: 'center'
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: updateTimeForeign
-            },
-            yAxis: {
-                type: 'value',
-                min: function (value) {
-                    return value.min - 1000;
-                },
-                max: 'dataMax'
-            },
-            series: [{
-                data: curedCountDataForeign,
-                type: 'line',
-                areaStyle: {}
-            }]
-        };
+        curedCountOptionForeign.title.text = "累计治愈";
+        curedCountOptionForeign.xAxis.data = updateTimeForeign;
+        curedCountOptionForeign.series[0].data = curedCountDataForeign;
 
         trendChartsForeign.setOption(confirmedCountOptionForeign);
     })
@@ -150,8 +64,8 @@ $.get("api/getBasicData").done(function (data) {
 
 //国内疫情地图
 var chinaMap = echarts.init(document.getElementById('chinaMap'));
-var confirmedOption;
-var suspectedOption;
+var confirmedOption = $.extend(true, {}, mapChartOption);
+var suspectedOption = $.extend(true, {}, mapChartOption);
 $.get("api/getProvinceData").done(function (data) {
     var confirmed = new Array();
     var suspected = new Array();
@@ -168,307 +82,143 @@ $.get("api/getProvinceData").done(function (data) {
         })
     }
 
-    confirmedOption = {
-        title : {
-            text: '累计确诊',
-            left: 'center'
-        },
-        tooltip : {
-            trigger: 'item'
-        },
-        visualMap: {
-            min: 0,
-            max: 2000,
-            left: 'left',
-            top: 'bottom',
-            calculable : true
-        },
-        toolbox: {
-            show: true,
-            orient : 'vertical',
-            left: 'right',
-            top: 'center',
-            feature : {
-                mark : {show: true},
-                dataView : {show: true, readOnly: false},
-                restore : {show: true},
-                saveAsImage : {show: true}
-            }
-        },
-        series : [
-            {
-                name: '累计确诊人数',
-                type: 'map',
-                mapType: 'china',
-                roam: false,
-                label: {
-                    normal: {
-                        show: false
-                    },
-                    emphasis: {
-                        show: true
-                    }
-                },
-                data:confirmed
-            }
-        ]
-    };
+    confirmedOption.title.text = "累计确诊";
+    confirmedOption.visualMap.min = 0;
+    confirmedOption.visualMap.max = 2000;
+    confirmedOption.series[0].name = "累计确诊人数";
+    confirmedOption.series[0].data = confirmed;
 
-    suspectedOption = {
-        title : {
-            text: '现存疑似',
-            left: 'center'
-        },
-        tooltip : {
-            trigger: 'item'
-        },
-        visualMap: {
-            min: 0,
-            max: 10,
-            left: 'left',
-            top: 'bottom',
-            calculable : true
-        },
-        toolbox: {
-            show: true,
-            orient : 'vertical',
-            left: 'right',
-            top: 'center',
-            feature : {
-                mark : {show: true},
-                dataView : {show: true, readOnly: false},
-                restore : {show: true},
-                saveAsImage : {show: true}
-            }
-        },
-        series : [
-            {
-                name: '现存疑似人数',
-                type: 'map',
-                mapType: 'china',
-                roam: false,
-                label: {
-                    normal: {
-                        show: false
-                    },
-                    emphasis: {
-                        show: true
-                    }
-                },
-                data:suspected
-            }
-        ]
-    };
+    suspectedOption.title.text = "现存疑似";
+    suspectedOption.visualMap.min = 0;
+    suspectedOption.visualMap.max = 10;
+    suspectedOption.series[0].name = "现存疑似人数";
+    suspectedOption.series[0].data = suspected;
 
     chinaMap.setOption(confirmedOption);
 })
 
-//切换地图
-function switchMap(type) {
-    if (type === "confirmed") {
-        chinaMap.setOption(confirmedOption);
-    } else if (type === "suspected") {
-        chinaMap.setOption(suspectedOption);
-    };
-}
-
 //国内疫情趋势图
 var trendCharts = echarts.init(document.getElementById('trendCharts'));
-var updateTime = [];
-var confirmedCountData = []; //累计确诊
-var currentConfirmedCountData = []; //现存确诊
-var deadCountData = []; //累计死亡
-var curedCountData = []; //累计治愈
+var updateTime = []; //更新时间数据
+var confirmedCountData = []; //累计确诊数据
+var currentConfirmedCountData = []; //现存确诊数据
+var deadCountData = []; //累计死亡数据
+var curedCountData = []; //累计治愈数据
 
-var confirmedCountOption; //累计确诊
-var currentConfirmedCountOption; //现存确诊
-var deadCountOption; //累计死亡
-var curedCountOption; //累计治愈
-$.get("api/getTimeLineData?startdate=2020-03-06&enddate=2020-03-30").done(function (data) {
-    for (var i = 0; i < data.length; i++) {
-        var date = new Date(data[i].updateTime);
+var confirmedCountOption = $.extend(true, {}, basicAreaChartOption); //累计确诊选项
+var currentConfirmedCountOption  = $.extend(true, {}, basicAreaChartOption); //现存确诊选项
+var deadCountOption  = $.extend(true, {}, basicAreaChartOption); //累计死亡选项
+var curedCountOption  = $.extend(true, {}, basicAreaChartOption); //累计治愈选项
+var startDate = "2020-03-01";
+
+var date = new Date(); // 获取当前日期
+var nowMonth = date.getMonth() + 1; // 获取当前月份
+var strDate = date.getDate(); // 获取当前是几号
+
+// 对月份进行处理，1-9月在前面添加一个“0”
+if (nowMonth >= 1 && nowMonth <= 9) {
+    nowMonth = "0" + nowMonth;
+}
+
+// 对月份进行处理，1-9号在前面添加一个“0”
+if (strDate >= 0 && strDate <= 9) {
+    strDate = "0" + strDate;
+}
+
+// 最后拼接字符串，得到一个格式为(yyyy-MM-dd)的日期
+var endDate = date.getFullYear() + "-" + nowMonth + "-" + strDate;
+
+// $.get("api/getTimeLineData?startdate=2020-03-06&enddate=2020-03-30").done(function (data) {
+$.get("https://www.windquant.com/qntcloud/data/edb?userid=fe4af824-484d-4b44-9688-7397584660b1&indicators=S6274770,S6290834,S6274771,S6274772&startdate=" + startDate + "&enddate=" + endDate + "").done(function (data) {
+    // for (var i = 0; i < data.length; i++) {
+    //     var date = new Date(data[i].updateTime);
+    //     var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+    //     var D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
+    //     updateTime.push(M+D);
+    //     confirmedCountData.push(Number(data[i].confirmedCount));
+    //     currentConfirmedCountData.push(data[i].currentConfirmedCount);
+    //     deadCountData.push(data[i].deadCount);
+    //     curedCountData.push(data[i].curedCount);
+    // }
+
+    for (var i = 0; i < data.times.length; i++) {
+        var date = new Date(data.times[i]);
         var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
         var D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
         updateTime.push(M+D);
-        confirmedCountData.push(Number(data[i].confirmedCount));
-        currentConfirmedCountData.push(data[i].currentConfirmedCount);
-        deadCountData.push(data[i].deadCount);
-        curedCountData.push(data[i].curedCount);
+        confirmedCountData.push(data.data[0][i]);
+        currentConfirmedCountData.push(data.data[1][i]);
+        deadCountData.push(data.data[2][i]);
+        curedCountData.push(data.data[3][i]);
     }
 
-    confirmedCountOption = {
-        title: {
-            text: "累计确诊",
-            left: 'center'
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: updateTime
-        },
-        yAxis: {
-            type: 'value',
-            min: function (value) {
-                return value.min - 1000;
-            },
-            max: 'dataMax'
-        },
-        series: [{
-            data: confirmedCountData,
-            type: 'line',
-            areaStyle: {}
-        }]
-    };
+    confirmedCountOption.title.text = "累计确诊";
+    confirmedCountOption.xAxis.data = updateTime;
+    confirmedCountOption.series[0].data = confirmedCountData;
 
-    currentConfirmedCountOption = {
-        title: {
-            text: "现存确诊",
-            left: 'center'
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: updateTime
-        },
-        yAxis: {
-            type: 'value',
-            min: function (value) {
-                return value.min - 1000;
-            },
-            max: 'dataMax'
-        },
-        series: [{
-            data: currentConfirmedCountData,
-            type: 'line',
-            areaStyle: {}
-        }]
-    };
+    currentConfirmedCountOption.title.text = "现存确诊";
+    currentConfirmedCountOption.xAxis.data = updateTime;
+    currentConfirmedCountOption.series[0].data = currentConfirmedCountData;
 
-    deadCountOption = {
-        title: {
-            text: "累计死亡",
-            left: 'center'
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: updateTime
-        },
-        yAxis: {
-            type: 'value',
-            min: function (value) {
-                return value.min - 1000;
-            },
-            max: 'dataMax'
-        },
-        series: [{
-            data: deadCountData,
-            type: 'line',
-            areaStyle: {}
-        }]
-    };
+    deadCountOption.title.text = "累计死亡";
+    deadCountOption.xAxis.data = updateTime;
+    deadCountOption.series[0].data = deadCountData;
 
-    curedCountOption = {
-        title: {
-            text: "累计治愈",
-            left: 'center'
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: updateTime
-        },
-        yAxis: {
-            type: 'value',
-            min: function (value) {
-                return value.min - 1000;
-            },
-            max: 'dataMax'
-        },
-        series: [{
-            data: curedCountData,
-            type: 'line',
-            areaStyle: {}
-        }]
-    };
+    curedCountOption.title.text = "累计治愈";
+    curedCountOption.xAxis.data = updateTime;
+    curedCountOption.series[0].data = curedCountData;
 
     trendCharts.setOption(confirmedCountOption);
 })
 
-//切换趋势图
-function switchChart(type) {
-    if (type === "confirmedCount") {
-        trendCharts.setOption(confirmedCountOption);
-    } else if (type === "currentConfirmedCount") {
-        trendCharts.setOption(currentConfirmedCountOption);
-    } else if (type === "deadCount") {
-        trendCharts.setOption(deadCountOption);
-    } else if (type === "curedCount") {
-        trendCharts.setOption(curedCountOption);
-    };
-}
-
-
 //国内各地区详细疫情
-
 var fold;
 var areaBlock1;
 var subBlock1;
 var subBlock2;
 var subBlock3;
 var subBlock4;
-var subBlock5;
 var areaBlock2;
 var subBlock;
 
-var provinceArray = ['安徽省','北京市','重庆市','福建省','甘肃省',
-    '广东省','广西壮族自治区','贵州省','海南省','河北省','黑龙江省',
-    '河南省','香港','湖北省','湖南省','江苏省','江西省',
-    '吉林省','辽宁省', '澳门','内蒙古自治区','宁夏回族自治区',
-    '青海省','山东省', '上海市','山西省','陕西省','四川省','台湾','天津市',
-    '新疆维吾尔自治区','西藏自治区','云南省','浙江省'];
-
-for (var i = 0; i < provinceArray.length; i++) {
-    $.get("api/getProvinceDetails?name="+provinceArray[i]+"").done(function (data) {
-
+$.get("api/getAllProvinceDetails").done(function (data) {
+    for (var i = 0; i < data.length; i++) {
         fold = $("<div class='fold'></div>");
-        var num = data.length - 1;
-        areaBlock1 = $("<div class='areaBlock1' data-toggle='collapse' href='#" + data[num].provinceName + "'></div>");
-        subBlock1 = $("<div class='subBlock1 col-md-3' style='cursor: pointer'></div>").text(data[num].provinceName);
-        subBlock2 = $("<div class='subBlock2 col-md-3'></div>").text(data[num].provinceConfirmedCount);
-        subBlock3 = $("<div class='subBlock3 col-md-2' ></div>").text(data[num].provinceSuspectedCount);
-        subBlock4 = $("<div class='subBlock4 col-md-2' ></div>").text(data[num].provinceCuredCount);
-        subBlock5 = $("<div class='subBlock5 col-md-2' ></div>").text(data[num].provinceDeadCount);
+        areaBlock1 = $("<div class='areaBlock1' data-toggle='collapse' href='#" + data[i][0].provinceName + "'></div>");
+        subBlock1 = $("<div class='subBlock1 col-md-3' style='cursor: pointer'></div>").text(data[i][0].provinceName);
+        subBlock2 = $("<div class='subBlock2 col-md-3'></div>").text(data[i][0].provinceConfirmedCount);
+        subBlock3 = $("<div class='subBlock3 col-md-3' ></div>").text(data[i][0].provinceDeadCount);
+        subBlock4 = $("<div class='subBlock4 col-md-3' ></div>").text(data[i][0].provinceCuredCount);
 
-        areaBlock1.append(subBlock1,subBlock2,subBlock3,subBlock4,subBlock5);
+        areaBlock1.append(subBlock1,subBlock2,subBlock3,subBlock4);
         fold.append(areaBlock1);
-        areaBlock2 = $("<div class='areaBlock2 collapse' id="+data[0].provinceName+"></div>");
+        areaBlock2 = $("<div class='areaBlock2 collapse' id=" + data[i][0].provinceName + "></div>");
 
-        for (var j = 0; j < data.length; j++) {
-            for (var i=0; i<=j; i++){
-                if (i%2==0){
+        for (var j = 0; j < data[i].length; j++) {
+            for (var k=0; k<=j; k++){
+                if (k%2 == 0){
                     subBlock = $("<div></div>");
-                    subBlock1 = $("<div class='subBlock1 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[j].cityName);
-                    subBlock2 = $("<div class='subBlock2 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[j].cityConfirmedCount);
-                    subBlock3 = $("<div class='subBlock3 col-md-2' style='background: rgba(60,63,65,0.1)'></div>").text(data[j].citySuspectedCount);
-                    subBlock4 = $("<div class='subBlock4 col-md-2' style='background: rgba(60,63,65,0.1)'></div>").text(data[j].cityCuredCount);
-                    subBlock5 = $("<div class='subBlock5 col-md-2' style='background: rgba(60,63,65,0.1)'></div>").text(data[j].cityDeadCount);
+                    subBlock1 = $("<div class='subBlock1 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[i][j].cityName);
+                    subBlock2 = $("<div class='subBlock2 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[i][j].cityConfirmedCount);
+                    subBlock3 = $("<div class='subBlock3 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[i][j].cityDeadCount);
+                    subBlock4 = $("<div class='subBlock4 col-md-3' style='background: rgba(60,63,65,0.1)'></div>").text(data[i][j].cityCuredCount);
                 }else{
                     subBlock = $("<div></div>");
-                    subBlock1 = $("<div class='subBlock1 col-md-3'></div>").text(data[j].cityName);
-                    subBlock2 = $("<div class='subBlock2 col-md-3' ></div>").text(data[j].cityConfirmedCount);
-                    subBlock3 = $("<div class='subBlock3 col-md-2' ></div>").text(data[j].citySuspectedCount);
-                    subBlock4 = $("<div class='subBlock4 col-md-2' ></div>").text(data[j].cityCuredCount);
-                    subBlock5 = $("<div class='subBlock5 col-md-2' ></div>").text(data[j].cityDeadCount);
+                    subBlock1 = $("<div class='subBlock1 col-md-3'></div>").text(data[i][j].cityName);
+                    subBlock2 = $("<div class='subBlock2 col-md-3' ></div>").text(data[i][j].cityConfirmedCount);
+                    subBlock3 = $("<div class='subBlock3 col-md-3' ></div>").text(data[i][j].cityDeadCount);
+                    subBlock4 = $("<div class='subBlock4 col-md-3' ></div>").text(data[i][j].cityCuredCount);
                 }
             }
-            subBlock.append(subBlock1,subBlock2,subBlock3,subBlock4,subBlock5);
+            subBlock.append(subBlock1,subBlock2,subBlock3,subBlock4);
             areaBlock2.append(subBlock);
         }
         fold.append(areaBlock2);
+
         $(".expand").append(fold);
-    })
-}
+    }
+})
+
 
 //重点国家疫情数据
 $.get("api/getForeignDetails").done(function (data) {
@@ -519,15 +269,3 @@ function sortBy(field) {
     }
 }
 
-//切换国外趋势图
-function switchForeignChart(type) {
-    if (type === "confirmedCount") {
-        trendChartsForeign.setOption(confirmedCountOptionForeign);
-    } else if (type === "currentConfirmedCount") {
-        trendChartsForeign.setOption(currentConfirmedCountOptionForeign);
-    } else if (type === "deadCount") {
-        trendChartsForeign.setOption(deadCountOptionForeign);
-    } else if (type === "curedCount") {
-        trendChartsForeign.setOption(curedCountOptionForeign);
-    };
-}
