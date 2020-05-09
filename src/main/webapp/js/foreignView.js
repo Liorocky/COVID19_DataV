@@ -9,6 +9,11 @@ $.get("api/getBasicData").done(function (data) {
     $("#deadCountForeign").text(globalStatistics.deadCount);
     $("#curedCountForeign").text(globalStatistics.curedCount);
 
+    new CountUp("currentConfirmedCountForeign", 0, globalStatistics.currentConfirmedCount, 0, 1).start();
+    new CountUp("confirmedCountForeign", 0, globalStatistics.confirmedCount, 0, 1).start();
+    new CountUp("deadCountForeign", 0, globalStatistics.deadCount, 0, 1).start();
+    new CountUp("curedCountForeign", 0, globalStatistics.curedCount, 0, 1).start();
+
     //国外趋势走势图
     var globalOtherTrendChartData = data.globalOtherTrendChartData; //获取数据链接
     $.get(globalOtherTrendChartData).done(function (data) {

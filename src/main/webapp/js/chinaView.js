@@ -8,6 +8,13 @@ $.get("api/getBasicData").done(function (data) {
     $("#confirmedCount").text(data.confirmedCount);
     $("#deadCount").text(data.deadCount);
     $("#curedCount").text(data.curedCount);
+
+    new CountUp("currentConfirmedCount", 0, data.currentConfirmedCount, 0, 1).start();
+    new CountUp("suspectedCount", 0, data.suspectedCount, 0, 1).start();
+    new CountUp("seriousCount", 0, data.seriousCount, 0, 1).start();
+    new CountUp("confirmedCount", 0, data.confirmedCount, 0, 1).start();
+    new CountUp("deadCount", 0, data.deadCount, 0, 1).start();
+    new CountUp("curedCount", 0, data.curedCount, 0, 1).start();
 })
 
 //国内疫情地图

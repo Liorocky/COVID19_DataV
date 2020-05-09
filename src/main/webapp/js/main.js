@@ -1,7 +1,3 @@
-$(function () {
-    loadHtml("views/chinaView","#china");
-})
-
 //新闻滚动条
 $.get("api/getNews").done(function (data) {
     var ul = $("<ul></ul>");
@@ -60,3 +56,42 @@ function sortBy(field) {
         return parseInt(b[field]) - parseInt(a[field]);
     }
 }
+
+// 数字动态变化
+/**
+ *
+ * @param {}
+ *            target 目标元素的 ID
+ * @param {}
+ *            startVal 开始值
+ * @param {}
+ *            endVal 结束值
+ * @param {}
+ *            decimals 小数点
+ */
+function countUp(target, startVal, endVal, decimals) {
+    new CountUp(target, startVal, endVal, decimals, 1).start();
+}
+
+/**
+ *
+ * @param {}
+ *            target 目标元素的 ID
+ * @param {}
+ *            startVal 开始值
+ * @param {}
+ *            endVal 结束值
+ * @param {}
+ *            decimals 小数点
+ * @param {}
+ *            options 选项 { useEasing: true, useGrouping: true, separator: ',',
+ *            decimal: '.', };
+ */
+// function countUp(target, startVal, endVal, decimals, options) {
+//     new CountUp(target, startVal, endVal, decimals, 1, options).start();
+// }
+
+
+$(function () {
+    loadHtml("views/chinaView","#china");
+})
