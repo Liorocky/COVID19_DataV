@@ -4,14 +4,8 @@
     <meta charset="UTF-8">
     <title>新冠病毒疫情监测系统</title>
 
-    <script src="https://cdn.staticfile.org/jquery/2.1.0/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
-    <script src="js/jquery.vticker.js"></script>
-    <script src="js/main.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-
 </head>
 <div class="page-header">
     <h1 style="text-align: center;">新冠病毒疫情监测系统 <small>COVID19_DataV</small></h1>
@@ -27,8 +21,8 @@
         <br/>
         <!-- 国内外疫情标签 -->
         <ul class="row nav nav-tabs" role="tablist">
-            <li role="presentation" class="active col-md-6 col-md-6 col-sm-6" style="text-align: center;"><a href="#china" aria-controls="China" role="tab" data-toggle="tab" onclick="windowResize()">国内疫情</a></li>
-            <li role="presentation" class="col-md-6 col-md-6 col-sm-6" style="text-align: center;"><a href="#foreign" aria-controls="foreign" role="tab" data-toggle="tab" onclick="windowResize()">国外疫情</a></li>
+            <li role="presentation" class="active col-md-6 col-md-6 col-sm-6" style="text-align: center;"><a href="#china" aria-controls="China" role="tab" data-toggle="tab" onclick="loadHtml('views/chinaView','#china');">国内疫情</a></li>
+            <li role="presentation" class="col-md-6 col-md-6 col-sm-6" style="text-align: center;"><a href="#foreign" aria-controls="foreign" role="tab" data-toggle="tab" onclick="loadHtml('views/foreignView','#foreign');">国外疫情</a></li>
         </ul>
 
         <!-- 国内外疫情标签面板 -->
@@ -45,28 +39,34 @@
 
 </div>
 
-<script>
-    $("#china").load("views/chinaView.html");
-    $("#foreign").load("views/foreignView.html", function (responseTxt,statusTxt,xhr) {
-        if (statusTxt === "success") {
-            var script1 = document.createElement("script");
-            var script2 = document.createElement("script");
-            var script3 = document.createElement("script");
-            script1.type = "text/javascript"
-            script2.type = "text/javascript"
-            script3.type = "text/javascript"
+<!--<script>-->
+<!--    $("#china").load("views/chinaView.html");-->
+<!--    $("#foreign").load("views/foreignView.html", function (responseTxt,statusTxt,xhr) {-->
+<!--        if (statusTxt === "success") {-->
+<!--            var script1 = document.createElement("script");-->
+<!--            var script2 = document.createElement("script");-->
+<!--            var script3 = document.createElement("script");-->
+<!--            script1.type = "text/javascript"-->
+<!--            script2.type = "text/javascript"-->
+<!--            script3.type = "text/javascript"-->
 
-            script1.src = "js/china.js";
-            $("body").append(script1);
+<!--            script1.src = "js/china.js";-->
+<!--            $("body").append(script1);-->
 
-            script2.src = "js/MyCharts.js";
-            $("body").append(script2);
+<!--            script2.src = "js/MyCharts.js";-->
+<!--            $("body").append(script2);-->
 
-            script3.src = "js/view.js";
-            $("body").append(script3);
-        }
-    });
-</script>
+<!--            script3.src = "js/view.js";-->
+<!--            $("body").append(script3);-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
 
+<script src="https://cdn.staticfile.org/jquery/2.1.0/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.staticfile.org/echarts/4.7.0/echarts.min.js"></script>
+<script src="js/jquery.vticker.js"></script>
+<script src="js/main.js"></script>
+<script src="js/echarts.template.js"></script>
 </body>
 </html>
