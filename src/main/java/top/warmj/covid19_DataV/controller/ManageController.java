@@ -23,7 +23,7 @@ public class ManageController {
         String fileName = "DXYArea.csv"; //文件名字
         String tempTableName = "dxyarea_temp"; //临时表
         String tableName = "dxyarea"; //生产表
-        String field = "(continentName,@dummy,countryName,@dummy,provinceName,@dummy,@dummy,province_confirmedCount,province_suspectedCount,province_curedCount,province_deadCount,cityName,@dummy,@dummy,city_confirmedCount,city_suspectedCount,city_curedCount,city_deadCount,updateTime)";
+        String field = "(continentName,@dummy,countryName,@dummy,provinceName,@dummy,@dummy,province_confirmedCount,province_suspectedCount,province_curedCount,province_deadCount,updateTime,cityName,@dummy,@dummy,city_confirmedCount,city_suspectedCount,city_curedCount,city_deadCount)";
 
         return updateDate(url, fileName, tempTableName, tableName, field);
     }
